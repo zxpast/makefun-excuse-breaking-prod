@@ -4,6 +4,8 @@
 [![rank](https://make.fun/badge/u-hamsyh-the-one-line-ai-excuse-for-breaking-e53dac66/zxpast/makefun-excuse-breaking-prod/rank.svg)](https://make.fun/bounty/u-hamsyh-the-one-line-ai-excuse-for-breaking-e53dac66/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=u-hamsyh-the-one-line-ai-excuse-for-breaking-e53dac66)
 [![reward](https://make.fun/badge/u-hamsyh-the-one-line-ai-excuse-for-breaking-e53dac66/zxpast/makefun-excuse-breaking-prod/reward.svg)](https://make.fun/bounty/u-hamsyh-the-one-line-ai-excuse-for-breaking-e53dac66?utm_source=github&utm_medium=readme&utm_campaign=u-hamsyh-the-one-line-ai-excuse-for-breaking-e53dac66)
 
+**Referral code: `6hmpy1rq`**
+
 One-line entry for make.fun's **The One-Line AI Excuse for Breaking Production** bounty: the funniest one-line excuse an AI agent gives its human right after breaking production, at most 180 characters.
 
 ## The entry
