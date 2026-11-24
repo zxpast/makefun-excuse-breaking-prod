@@ -66,9 +66,34 @@ if (trimmed.length === 0 || codePoints < 1 || codePoints > 180) {
 if (/[\r\n]/.test(EXCUSE)) {
   throw new Error("excuse must be a single line");
 }
+// Front gate, tightened: no doubled whitespace anywhere, a capital
+// opening letter, and exactly one sentence-ending period (no ".."
+// tail, no missing full stop) — a one-liner that reads clean.
+if (/\s{2,}/.test(EXCUSE)) {
+  throw new Error("excuse must not contain consecutive whitespace");
+}
+if (!/^[A-Z]/.test(EXCUSE)) {
+  throw new Error("excuse must start with a capital letter");
+}
+if (!EXCUSE.endsWith(".") || EXCUSE.endsWith("..")) {
+  throw new Error("excuse must end with exactly one period");
+}
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
 fs.mkdirSync(outDir, { recursive: true });
-fs.writeFileSync(path.join(outDir, "entry.txt"), EXCUSE, "utf8");
+const outPath = path.join(outDir, "entry.txt");
+fs.writeFileSync(outPath, EXCUSE, "utf8");
+// Read-back verification: the bytes on disk must be exactly the
+// excuse — same byte length (135 bytes, no trailing newline added
+// by the write) and same content — or the run fails loudly instead
+// of shipping a silently altered entry.
+const readBack = fs.readFileSync(outPath, "utf8");
+const writtenBytes = fs.statSync(outPath).size;
+if (writtenBytes !== Buffer.byteLength(EXCUSE, "utf8")) {
+  throw new Error(`entry.txt is ${writtenBytes} bytes, expected ${Buffer.byteLength(EXCUSE, "utf8")}`);
+}
+if (readBack !== EXCUSE) {
+  throw new Error("entry.txt read-back does not match the excuse");
+}
 
 console.log(EXCUSE);
